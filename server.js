@@ -1,6 +1,8 @@
 //Import express
 const express = require('express')
 
+const path = require('path');
+
 const fs = require('fs');
 
 const dbNotes = require('./db/db.json');
@@ -19,13 +21,8 @@ app.get('/api/notes', (req, res) =>
 
 );
 
-app.post('/api/notes', (req, res) =>
-  
-
-);
-
-app.get('*',(req,res)=>
-  res.sendFile(path.join(__dirname,'/public/index.html'))
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 //To initialize the server
