@@ -31,7 +31,8 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request received to add a note`);
-    const { id, title, text } = req.body;
+
+    const { title, text } = req.body;
 
     if (title && text) {
         // Variable for the note we're saving
@@ -74,6 +75,24 @@ app.post('/api/notes', (req, res) => {
         res.json('Error in posting note');
       }
 
+});
+
+app.delete("/api/notes/:id",(req, res) => {
+  for(let i=0;i<dbNotes.length;i++){
+      if(dbNotes[i].id==req.params.id){
+          dbNotes.splice(i,1);
+          break;
+      }
+  }
+  //Update the file
+  fs.writeFileSync(path.join(__dirname,'db/db.json'),JSON.stringify(dbNotes),err => {
+      if (err) {
+          return console.log(err);
+      } else {
+          console.log("Deleted!");
+      }
+  });
+  res.json(dbNotes);
 });
 
 app.get('*', (req, res) =>

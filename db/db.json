@@ -3,5 +3,10 @@
         "id": 1,
         "title": "Git Hub to Heroku",
         "text": "1. On Heroku: \"Create new app\"\n2. \"Connect to Github\"\n3. Find repo\n4. Connect to repo"
+    },
+    {
+        "id": 2,
+        "title": "Title",
+        "text": "Text"
     }
 ]
